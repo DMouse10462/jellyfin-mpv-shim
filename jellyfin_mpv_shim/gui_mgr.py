@@ -405,6 +405,7 @@ class STrayProcess(Process):
 
         icon = Icon(USER_APP_NAME, menu=Menu(*menu_items))
         icon.icon = Image.open(get_resource("systray.png"))
+        icon.freedesktop_icon_name = os.environ.get("FLATPAK_ID") or None
         self.icon_stop = icon.stop
         def setup(icon):
             icon.visible = True
